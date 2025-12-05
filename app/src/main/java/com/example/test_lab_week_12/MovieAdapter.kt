@@ -15,7 +15,6 @@ class MovieAdapter(private val clickListener: MovieClickListener) :
     private val movies = mutableListOf<Movie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.view_movie_item, parent, false)
         return MovieViewHolder(view)
@@ -36,7 +35,6 @@ class MovieAdapter(private val clickListener: MovieClickListener) :
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         private val titleText: TextView = itemView.findViewById(R.id.movie_title)
         private val posterImage: ImageView = itemView.findViewById(R.id.movie_poster)
 

@@ -1,5 +1,6 @@
 package com.example.test_lab_week_12
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +29,13 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.movie_list)
         movieAdapter = MovieAdapter(object : MovieAdapter.MovieClickListener {
             override fun onMovieClick(movie: Movie) {
-                Snackbar.make(recyclerView, "Clicked: ${movie.title}", Snackbar.LENGTH_SHORT).show()
+                val intent = Intent(this@MainActivity, DetailsActivity::class.java).apply {
+                    putExtra(DetailsActivity.EXTRA_TITLE, movie.title)
+                    putExtra(DetailsActivity.EXTRA_RELEASE, movie.release_date)
+                    putExtra(DetailsActivity.EXTRA_OVERVIEW, movie.overview)
+                    putExtra(DetailsActivity.EXTRA_POSTER, movie.poster_path)
+                }
+                startActivity(intent)
             }
         })
         recyclerView.adapter = movieAdapter
